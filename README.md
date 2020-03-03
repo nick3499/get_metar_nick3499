@@ -18,6 +18,12 @@ To print the help display, enter the following in the terminal emulator:
 $ python3 get_metar.py --help
 ```
 
+Alternatively, a raw data stream could be piped to `python3` in the Bash CLI:
+
+```
+$ curl -s https://raw.githubusercontent.com/nick3499/get_metar_nick3499/master/get_metar.py | python3
+```
+
 ## Launch the App
 
 The following command line arguments could be appended to a shell script named `.getmetar`. `$1` functions similar to Python's [sys.argv[1]](https://docs.python.org/3/library/sys.html#sys.argv) where, for example, if a user appended a function to `.bashrc` run commands, named `getmetar`, which included `$1` for the first command line argument passed to `getmetar` (see `getmetar mor` example below).
