@@ -1,8 +1,0 @@
-#! /bin/bash
-
-sudo curl -s https://aviationweather.gov/adds/dataserver_current/current/metars.cache.csv -o $HOME/.userpy/get_metar/data.csv
-sudo chown 1000:1000 $HOME/.userpy/get_metar/data.csv
-sudo chmod 700 $HOME/.userpy/get_metar/data.csv
-/bin/python3 $HOME/.userpy/get_metar/get_metar_alt_1.py
-
-# https://w1.weather.gov/data/METAR/KC09.1.txt
