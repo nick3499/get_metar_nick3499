@@ -10,6 +10,14 @@ Get decoded METAR data: Python3: subprocess.run(), click
 - Python 3.8.2
 - GNOME Shell 3.35.91
 
+## Help
+
+To print the help display, enter the following in the terminal emulator:
+
+```shell
+$ python3 get_metar.py --help
+```
+
 ## Launch the App
 
 The following command line arguments could be appended to a shell script named `.getmetar`. `$1` functions similar to Python's [sys.argv[1]](https://docs.python.org/3/library/sys.html#sys.argv) where, for example, if a user appended a function to `.bashrc` run commands, named `getmetar`, which included `$1` for the first command line argument passed to `getmetar` (see `getmetar mor` example below).
