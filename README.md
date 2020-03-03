@@ -1,4 +1,7 @@
-# README
+# get_metar_nick3499
+Get decoded METAR data: Python3: subprocess.run(), click
+
+![screen capture](screen_capture.png)
 
 ## Tested Using:
 
