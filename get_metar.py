@@ -1,6 +1,7 @@
 #! /bin/python3
 '''`get_decoded_metar` module contains `get_decoded_metar()` method
-which returns decoded METAR data. METARs: KC09, KDBQ, KDVN, KPIA'''
+which returns decoded METAR data. METARs: KC09, KDBQ, KDVN, KPIA
+$ python3 get_metar.py --help'''
 from subprocess import run
 import click
 
