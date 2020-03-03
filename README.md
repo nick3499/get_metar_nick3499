@@ -12,7 +12,7 @@ Get decoded METAR data: Python3: subprocess.run(), click
 
 ## Launch the App
 
-The following command line arguments could be used as a shell script. `$1` functins similar to Python's `input()` method, but there is no prompt. 
+The following command line arguments could be used as a shell script. `$1` functions similar to Python's `input()` method, but there is no prompt. 
 
 ```shell
 /bin/python3 $HOME/scripts/get_metar/get_metar.py --station $1
@@ -55,7 +55,7 @@ from subprocess import run
 import click
 ```
 
-`subprocess.run()` method is used for executing Bash command line arguments from a Python executable file. For example, the following Python instruction gets the decoded METAR data for current conditions.
+`subprocess.run()` method is used for executing Bash command line arguments from a Python executable. For example, the following Python instruction gets the decoded METAR data for current conditions.
 
 >If _check_ is true, and the process exits with a non-zero exit code, a CalledProcessError exception will be raised. Attributes of that exception hold the arguments, the exit code, and stdout and stderr if they were captured.
 
@@ -71,7 +71,7 @@ Which translates to the following in the CLI:
 $ curl ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/KJOT.TXT
 ```
 
-`click.group()` method is being used to group methods together. For example, the following command line arguments retrieves METAR data for Morris Municipal Airport.
+`click.group()` method is being used to group methods together. For example, the following command line arguments retrieve METAR data for Morris Municipal Airport.
 
 ```shell
 $ python3 get_metar.py --station mor
