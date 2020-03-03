@@ -12,13 +12,13 @@ Get decoded METAR data: Python3: subprocess.run(), click
 
 ## Launch the App
 
-The following command line arguments could be used as a shell script. `$1` functions similar to Python's `input()` method, but there is no prompt. 
+The following command line arguments could be appended to a shell script named `.getmetar`. `$1` functions similar to Python's [sys.argv[1]](https://docs.python.org/3/library/sys.html#sys.argv) where, for example, if a user appended a function to `.bashrc` run commands, named `getmetar`, which included `$1` for the first command line argument passed to `getmetar` (see `getmetar mor` example below).
 
 ```shell
 /bin/python3 $HOME/scripts/get_metar/get_metar.py --station $1
 ```
 
-To get the decoded METAR data for the Morris Municipal Airport (KC09), run the script above using the command line arguments below.
+To get the decoded METAR data for the Morris Municipal Airport (KC09), enter the command line arguments below:
 
 ```shell
 $ bash .getmetar mor
