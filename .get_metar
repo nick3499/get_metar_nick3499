@@ -1,3 +1,0 @@
-#! /bin/sh
-# $ getmetar dvn
-/bin/python3 $HOME/scripts/get_metar/get_metar.py --station $1
