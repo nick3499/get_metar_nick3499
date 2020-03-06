@@ -26,12 +26,24 @@ To run `get_metar_click.py` in Bash (Unix shell), save the following into a shel
 /bin/python3 $HOME/scripts/get_metar/get_metar_click.py --station $1
 ```
 
+Or run the raw script from Github in Bash to get the help doc:
+
+```shell
+$ curl -s https://raw.githubusercontent.com/nick3499/get_metar_nick3499/master/get_metar_click.py | python3
+```
+
 ## Run get_metar_fire.py
 
 To run `get_metar_fire.py` in Bash (Unix shell), save the following into a shell script and execute it:
 
 ```shell
 /bin/python3 $HOME/scripts/get_metar/get_metar_fire.py $1
+```
+
+Or run the raw script from Github in Bash to get the help doc:
+
+```shell
+$ curl -s https://raw.githubusercontent.com/nick3499/get_metar_nick3499/master/get_metar_fire.py | python3
 ```
 
 ## Shebang Line
