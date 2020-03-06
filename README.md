@@ -15,6 +15,7 @@ Get decoded METAR data: Python3: subprocess.run(), click
 
 - `subprocess.run()`
 - `fire.Fire()`
+- `click` methods
 
 ## Run get_metar_click.py
 
