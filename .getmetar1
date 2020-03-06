@@ -1,7 +1,0 @@
-#! /bin/bash
-# sudo curl https://www.aviationweather.gov/docs/metar/stations.txt | grep ^IL
-# KDBQ, KDVN, KPIA, 
-sudo curl -s https://aviationweather.gov/adds/dataserver_current/current/metars.cache.csv | grep KC09 > $HOME/.userpy/get_metar/data.txt
-sudo chown 1000:1000 $HOME/.userpy/get_metar/data.txt
-sudo chmod 700 $HOME/.userpy/get_metar/data.txt
-/bin/python3 $HOME/.userpy/get_metar/get_metar.py
