@@ -18,7 +18,7 @@ Get decoded METAR data: Python3: subprocess.run(), click
 
 ## Run get_metar_click.py
 
-To run `get_metar_click.py` in Bash (Unix shell), save the following into a shell script and execute it in the Bash (Unix shell) CLI:
+To run `get_metar_click.py` in Bash (Unix shell), save the following into a shell script and execute it:
 
 
 ```shell
@@ -27,7 +27,7 @@ To run `get_metar_click.py` in Bash (Unix shell), save the following into a shel
 
 ## Run get_metar_fire.py
 
-To run `get_metar_fire.py` in Bash (Unix shell), save the following into a shell script and execute it in the Bash (Unix shell) CLI:
+To run `get_metar_fire.py` in Bash (Unix shell), save the following into a shell script and execute it:
 
 ```shell
 /bin/python3 $HOME/scripts/get_metar/get_metar_fire.py $1
