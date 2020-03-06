@@ -1,55 +1,35 @@
 # get_metar_nick3499
+
 Get decoded METAR data: Python3: subprocess.run(), click
 
 ![screen capture](screen_capture.png)
 
 ## Tested Using:
 
-- Ubuntu 20.04 Focal Fossa (development branch)
-- Linux nick-CM1630 5.4.0-14-generic
+- Linux 5.4.0-14-generic
+- Ubuntu 20.04 LTS (Focal Fossa)
 - Python 3.8.2
 - GNOME Shell 3.35.91
 
-## Help
+## Methods Used
 
-To print the help display, enter the following in the terminal emulator:
+- `subprocess.run()`
+- `fire.Fire()`
 
-```shell
-$ python3 get_metar.py --help
-```
+## Run get_metar_click.py
 
-Alternatively, a raw data stream could be piped to `python3` in the Bash CLI:
-
-```
-$ curl -s https://raw.githubusercontent.com/nick3499/get_metar_nick3499/master/get_metar.py | python3
-```
-
-## Launch the App
-
-The following command line arguments could be appended to a shell script named `.getmetar`. `$1` functions similar to Python's [sys.argv[1]](https://docs.python.org/3/library/sys.html#sys.argv) where, for example, if a user appended a function to `.bashrc` run commands, named `getmetar`, which included `$1` for the first command line argument passed to `getmetar` (see `getmetar mor` example below).
+To run `get_metar_click.py` in Bash (Unix shell), enter the following in the CLI:
 
 ```shell
-/bin/python3 $HOME/scripts/get_metar/get_metar.py --station $1
+/bin/python3 $HOME/scripts/get_metar/get_metar_click.py --station $1
 ```
 
-To get the decoded METAR data for the Morris Municipal Airport (KC09), enter the command line arguments below:
+## Run get_metar_fire.py
+
+To run `get_metar_fire.py` in Bash (Unix shell), enter the following in the CLI:
 
 ```shell
-$ bash .getmetar mor
-```
-
-A function could also be added to the `.bashrc` run commands file:
-
-```shell
-function getmetar() {
-  /bin/python3 $HOME/.userpy/get_metar/get_metar.py --station $1
-}
-```
-
-Then execute the following command line arguments:
-
-```shell
-$ getmetar mor
+/bin/python3 $HOME/scripts/get_metar/get_metar_fire.py $1
 ```
 
 ## Shebang Line
@@ -62,36 +42,42 @@ $ getmetar mor
 
 [Shebang_(Unix): Magic number: Wikipedia](https://en.wikipedia.org/wiki/Shebang_(Unix)#Magic_number)
 
-## Imports
+## Imports (click version)
 
 ```python
 from subprocess import run
 import click
 ```
 
-`subprocess.run()` method is used for executing Bash command line arguments from a Python executable. For example, the following Python instruction gets the decoded METAR data for current conditions.
+- `subprocess.run()` is used to execute command line args from a Python script in the Bash (Unix shell).
+- `click` is used to generate command line interfaces.
+
+## Imports (fire version)
+
+```python
+from subprocess import run
+from fire import Fire
+```
+
+- `subprocess.run()` is used to execute command line args from a Python script in the Bash (Unix shell).
+- `fire.Fire()` is used to generate command line interfaces.
+
+## _get_data
+
+```python
+def _get_data(icao_code):
+    return run(['curl',
+                'ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/' +
+                icao_code], check=True)
+```
+
+`_get_data` uses the `subprocess.run()` method to run command line args in the Bash (Unix shell). `curl` is used to get decoded METAR data from a `noaa.gov` FTP link. `icao_code` can be one of four ICAO codes depending on which specific airport is selected.
 
 >If _check_ is true, and the process exits with a non-zero exit code, a CalledProcessError exception will be raised. Attributes of that exception hold the arguments, the exit code, and stdout and stderr if they were captured.
 
 [subprocess — Subprocess management: Using the subprocess Module](https://docs.python.org/3/library/subprocess.html#using-the-subprocess-module)
 
-```python
-run(['curl', '-s', 'ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/KJOT.TXT'], check=True)
-```
-
-Which translates to the following in the CLI:
-
-```shell
-$ curl ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/KJOT.TXT
-```
-
-`click.group()` method is being used to group methods together. For example, the following command line arguments retrieve METAR data for Morris Municipal Airport.
-
-```shell
-$ python3 get_metar.py --station mor
-```
-
-The `--station` option was made available by the `click.option()` method, and `station` was passed as an argument to the `get_decoded_metar()` method:
+## Click Group
 
 ```python
 @click.group()
@@ -101,24 +87,62 @@ def get_decoded_metar(station):
 
 The grouped commands are then bound to `get_decoded_metar()` using the `click.command()` method.
 
+## Get METAR (click version)
+
 ```python
 @get_decoded_metar.command()
+def mor():
+    '''Get decoded METAR data for Morris Municipal Airport.'''
+    _get_data('KC09.TXT')
+
+@get_decoded_metar.command()
 def dbq():
+    '''Get decoded METAR data for Dubuque Regional Airport.'''
     _get_data('KDBQ.TXT')
+
+@get_decoded_metar.command()
+def dvn():
+    '''Get decoded METAR data for Davenport Municipal Airport.'''
+    _get_data('KDVN.TXT')
+
+@get_decoded_metar.command()
+def pia():
+    '''Get decoded METAR data for Peoria International Airport.'''
+    _get_data('KPIA.TXT')
 ```
 
-The `get_data()` function is defined before the others because it can be used by all four methods that extract METAR data:
+## Get METAR (fire version)
 
 ```python
-def _get_data(icao_code):
-    return run(['curl', '-s', 'ftp://tgftp.nws.noaa.gov/data/observations/metar/decoded/' + icao_code], check=True)
+def mor():
+    '''Get decoded METAR for Morris Municipal Airport.'''
+    _get_data('KC09.TXT')
+
+def dbq():
+    '''Get decoded METAR for Dubuque Regional Airport.'''
+    _get_data('KDBQ.TXT')
+
+def dvn():
+    '''Get decoded METAR for Davenport Municipal Airport.'''
+    _get_data('KDVN.TXT')
+
+def pia():
+    '''Get decoded METAR for Peoria International Airport.'''
+    _get_data('KPIA.TXT')
 ```
 
-## Standalone
-
-If `get_metar.py` is executed as an app, its `__name__` will be `__main__` and the `get_decoded_metar()` method will run. But if it is imported into another executable Python app, its name will no longer be `__main__`, and it will need to be called with dot syntax. For example: `get_metar.get_decoded_metar()`.
+## if __name__ == '__main__' (click version)
 
 ```python
 if __name__ == '__main__':
-    get_decoded_metar()  # if standalone, run app
+    get_decoded_metar()
+```
+
+If executed as a standalone app, `get_decoded_metar()` will run automatically. Otherwise, if imported into another module, its name will no longer be main, and dot syntax will be required to start it.
+
+## if __name__ == '__main__' (fire version)
+
+```python
+if __name__ == '__main__':
+    Fire()
 ```
