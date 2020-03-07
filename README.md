@@ -160,3 +160,8 @@ If executed as a standalone app, `get_decoded_metar()` will run automatically. O
 if __name__ == '__main__':
     Fire()
 ```
+
+## Other Flags
+
+- `python3 get_metar_fire.py pia -- --help` to get help doc for specific command
+- `python3 get_metar_fire.py pia -- --trace` to trace operations of specific command
