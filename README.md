@@ -165,3 +165,5 @@ if __name__ == '__main__':
 
 - `python3 get_metar_fire.py pia -- --help` to get help doc for specific command
 - `python3 get_metar_fire.py pia -- --trace` to trace operations of specific command
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R72LISM)
